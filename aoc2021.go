@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-    fmt.Println("hello world")
-    day1part1()
+    //day1part1()
+    day1part2()
 }
 
 func day1part1() {
@@ -20,6 +20,21 @@ func day1part1() {
         if nums[i] < n {
             count++
         }
+    }
+    fmt.Println(count)
+}
+
+func day1part2() {
+    nums := LinesOfNumbers2Slice("input/d01p2.txt")
+
+    var count, prev int
+    prev = nums[0] + nums[1] + nums[2]
+    for i, _ := range nums[3:] {
+        next := nums[i + 1] + nums[i + 2] + nums[i + 3]
+        if prev < next {
+            count++
+        }
+        prev = next
     }
     fmt.Println(count)
 }
