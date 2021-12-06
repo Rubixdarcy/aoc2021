@@ -35,4 +35,21 @@ func Day6Part1() {
 }
 
 func Day6Part2() {
+    ns := lineOfCsv2Slice("input/d06p1.txt")
+    var state lanternState
+
+    for _, n := range ns {
+        state[n]++
+    }
+
+    for i := 0; i < 256; i++ {
+        state = state.nextState()
+    }
+
+    count := 0
+    for _, n := range state {
+        count += n
+    }
+
+    fmt.Println(count)
 }
