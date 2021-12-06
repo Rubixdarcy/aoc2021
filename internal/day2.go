@@ -51,6 +51,25 @@ func Day2Part1() {
 }
 
 func Day2Part2() {
+    input, err := ioutil.ReadFile("input/d02p2.txt")
+    check(err)
+
+    insts := parseLinesDay5(input)
+
+    var horizontal, depth, aim int
+    for _, inst := range insts {
+        switch inst.dir {
+        case forward:
+            horizontal += inst.dist
+            depth += inst.dist * aim
+        case up:
+            aim -= inst.dist
+        case down:
+            aim += inst.dist
+        }
+    }
+
+    fmt.Println(horizontal * depth)
 }
 
 func parseLinesDay5(input []byte) []inst {
