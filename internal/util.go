@@ -5,6 +5,7 @@ import (
     "strconv"
     "os"
     gp "github.com/prataprc/goparsec"
+    "strings"
 )
 
 func asInt(node gp.ParsecNode) int {
@@ -28,6 +29,26 @@ func linesOfNumbers2Slice(filename string) []int {
 
     for scanner.Scan() {
         n, err := strconv.Atoi(scanner.Text())
+        check(err)
+        nums = append(nums, n)
+    }
+
+    return nums
+}
+
+func lineOfCsv2Slice(filename string) []int {
+    // Adapted courtesy of https://stackoverflow.com/questions/5884154/read-text-file-into-string-array-and-write
+    f, err := os.Open(filename)
+    check(err)
+    defer f.Close()
+
+    scanner := bufio.NewScanner(f)
+    scanner.Scan()
+
+
+    var nums []int
+    for _, s := range strings.Split(scanner.Text(), ",") {
+        n, err := strconv.Atoi(s)
         check(err)
         nums = append(nums, n)
     }
