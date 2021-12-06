@@ -3,7 +3,7 @@ package internal
 import "fmt"
 
 func Day1Part1() {
-    nums := linesOfNumbers2Slice("input/d01p1.txt")
+    nums := linesOfNumbers2Slice("input/day01.txt")
 
     count := 0
     for i, n := range nums[1:] {
@@ -15,7 +15,7 @@ func Day1Part1() {
 }
 
 func Day1Part2() {
-    nums := linesOfNumbers2Slice("input/d01p2.txt")
+    nums := linesOfNumbers2Slice("input/day01.txt")
 
     var count, prev int
     prev = nums[0] + nums[1] + nums[2]

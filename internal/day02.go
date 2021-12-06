@@ -30,7 +30,7 @@ func Direction(s string) direction {
 type inst struct { dir direction; dist int }
 
 func Day2Part1() {
-    input, err := ioutil.ReadFile("input/d02p1.txt")
+    input, err := ioutil.ReadFile("input/day02.txt")
     check(err)
 
     insts := parseLinesDay5(input)
@@ -51,7 +51,7 @@ func Day2Part1() {
 }
 
 func Day2Part2() {
-    input, err := ioutil.ReadFile("input/d02p2.txt")
+    input, err := ioutil.ReadFile("input/day02.txt")
     check(err)
 
     insts := parseLinesDay5(input)

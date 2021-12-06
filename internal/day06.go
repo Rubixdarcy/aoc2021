@@ -15,7 +15,7 @@ func (s lanternState) nextState() lanternState {
 }
 
 func Day6Part1() {
-    ns := lineOfCsv2Slice("input/d06p1.txt")
+    ns := lineOfCsv2Slice("input/day06.txt")
     var state lanternState
 
     for _, n := range ns {
@@ -35,7 +35,7 @@ func Day6Part1() {
 }
 
 func Day6Part2() {
-    ns := lineOfCsv2Slice("input/d06p1.txt")
+    ns := lineOfCsv2Slice("input/day06.txt")
     var state lanternState
 
     for _, n := range ns {

@@ -70,7 +70,7 @@ func intersectHorVer(hor, ver line, xs map[point]struct{}) {
 }
 
 func Day5Part1() {
-    input, err := ioutil.ReadFile("input/d05p1.txt")
+    input, err := ioutil.ReadFile("input/day05.txt")
     check(err)
 
     lines := parseLines(input)
@@ -109,7 +109,7 @@ func Day5Part1() {
 // I solved part 1 efficiently. Doing part 2 efficiently would be convoluted
 // so instead I'm using a huge hashmap that maps all coords to their count.
 func Day5Part2() {
-    input, err := ioutil.ReadFile("input/d05p2.txt")
+    input, err := ioutil.ReadFile("input/day05.txt")
     check(err)
 
     lines := parseLines(input)
