@@ -18,6 +18,8 @@ var challenges = map[challenge]func(){
     chal(1, 2): Day1Part2,
     chal(2, 1): Day2Part1,
     chal(2, 2): Day2Part2,
+    chal(3, 1): Day3Part1,
+    chal(3, 2): Day3Part2,
     chal(5, 1): Day5Part1,
     chal(5, 2): Day5Part2,
     chal(6, 1): Day6Part1,
