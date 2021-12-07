@@ -68,6 +68,22 @@ func playBingo(numbers []int, boards []*board) (int, bool) {
     return 0, false
 }
 
+func playBingoUntilComplete(numbers []int, boards []*board) (int, bool) {
+    score := 0
+    winner := false
+    completeBoards := make([]bool, len(boards))
+    for _, number := range numbers {
+        for i, board := range boards {
+            if !completeBoards[i] && board.markNumber(number) {
+                score = board.value() * number
+                winner = true
+                completeBoards[i] = true
+            }
+        }
+    }
+    return score, winner
+}
+
 func Day4Part1() {
     input, err := ioutil.ReadFile("input/day04.txt")
     check(err)
@@ -89,6 +105,23 @@ func Day4Part1() {
 }
 
 func Day4Part2() {
+    input, err := ioutil.ReadFile("input/day04.txt")
+    check(err)
+
+    numbers, boardNums := parseBingoInput(input)
+
+    var boards []*board
+    boardNumsCount := len(boardNums)
+    for i := 0; i < boardNumsCount; i += boardArea {
+        boards = append(boards, &board{ nums: boardNums[i:i + boardArea]})
+    }
+
+    score, winner := playBingoUntilComplete(numbers, boards)
+
+    if !winner {
+        fmt.Println("No winner")
+    }
+    fmt.Println(score)
 }
 
 func parseBingoInput(input []byte) ([]int, []int) {
