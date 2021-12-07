@@ -3,14 +3,26 @@ package internal
 import (
     "bufio"
     "strconv"
-    "os"
     gp "github.com/prataprc/goparsec"
     "strings"
+    "os"
 )
 
 func asInt(node gp.ParsecNode) int {
     return atoi(node.(*gp.Terminal).Value)
 }
+
+func asInts(nodes []gp.ParsecNode) gp.ParsecNode {
+    var nums []int
+    for _, n := range nodes {
+        nums = append(nums, asInt(n))
+    }
+    return nums
+}
+
+var commaParser = gp.AtomExact(",", "COMMA")
+var csvLineParser = gp.Many(asInts, gp.Int(), commaParser)
+var whitespaceIntsParser = gp.Many(asInts, gp.Int())
 
 func atoi(s string) int {
     i, err := strconv.Atoi(s)
